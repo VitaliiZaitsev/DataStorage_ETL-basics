@@ -27,11 +27,13 @@ class DataTransferPostgres(DataTransfer):
             escapechar='\\'
         )
 
+        job_id = context["task_instance"].job_id,    # ИЗМЕНЕНИЕ!!!!!!!!
         while True:
             rows = pg_cursor.fetchmany(size=1000)
             if rows:
                 for row in rows:
                     _row = list(row)
+                    _row.append(job_id[0])           # ИЗМЕНЕНИЕ!!!!!!!!!
                     csvwriter.writerow(_row)
             else:
                 break
