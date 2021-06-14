@@ -1,0 +1,30 @@
+groups:
+  hubs:
+    nation:
+    region:
+  links:
+    nation_region:
+        nation: ['nation', 'region']           
+  satellites:
+    nation: nation
+    region: region
+sources:
+  tables:
+    nation:  
+      columns:
+      - nation_bk:
+          bk_for: nation
+      - name:
+          source_for: nation
+      - region_bk:
+          bk_for: region
+      - comment:
+          source_for: nation        
+    region:
+      columns:
+      - region_bk:
+          bk_for: region
+      - name:
+          source_for: region
+      - comment:
+          source_for: region
